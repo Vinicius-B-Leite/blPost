@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "283025990949",
+    "project_id": "blpost-57993",
+    "storage_bucket": "blpost-57993.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:283025990949:android:ed25e76e5379b8e4d5a6cc",
+        "android_client_info": {
+          "package_name": "com.blpost"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "283025990949-g40sp3kaclbtb5bpv1sru7na0l5u07ac.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBvS5M7iiIQ9sTCBpA3XupsizuTAlMWnBE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "283025990949-g40sp3kaclbtb5bpv1sru7na0l5u07ac.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
