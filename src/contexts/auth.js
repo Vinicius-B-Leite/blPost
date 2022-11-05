@@ -81,7 +81,7 @@ export default function AuthContextProvider({children}){
         await AsyncStorage.setItem('_user', JSON.stringify(data))
     }
     return(
-        <AuthContext.Provider value={{isLogin: !!user, singUp, singIn, loadingAuth, loadingLogin, singOut}}>
+        <AuthContext.Provider value={{isLogin: !!user, singUp, singIn, loadingAuth, loadingLogin, singOut, user}}>
             {children}
         </AuthContext.Provider>
     )
