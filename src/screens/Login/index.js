@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Text, ToastAndroid } from 'react-native';
+import { ActivityIndicator, Text, ToastAndroid } from 'react-native';
 import { AuthContext } from '../../contexts/auth';
 import * as S from './styles';
 
@@ -11,7 +11,7 @@ export default function Login() {
 
     const [login, setLogin] = useState(true)
 
-    const { singUp } = useContext(AuthContext)
+    const { singUp, singIn, loadingAuth, loadingLogin } = useContext(AuthContext)
 
     const hadleNavigation = () => {
         setLogin(!login)
@@ -20,11 +20,12 @@ export default function Login() {
         setName('')
     }
 
-    const handleLogin = () => {
+    const handleLogin = async () => {
         if (!email || !password) {
             ToastAndroid.show('Erro', 2000)
             return
         }
+        await singIn(email, password)
     }
 
     const handleSingUp = async() => {
@@ -44,7 +45,7 @@ export default function Login() {
                 <S.Input value={password} onChangeText={setPassword} placeholder='**********' />
 
                 <S.Button onPress={handleLogin}>
-                    <S.TxtButton>Login</S.TxtButton>
+                    <S.TxtButton>{loadingAuth ? <ActivityIndicator size={24} color='#fff'/> : 'Login'}</S.TxtButton>
                 </S.Button>
 
                 <S.SingUpButton onPress={hadleNavigation}>
@@ -62,7 +63,7 @@ export default function Login() {
             <S.Input value={password} onChangeText={setPassword} placeholder='**********' />
 
             <S.Button onPress={handleSingUp}>
-                <S.TxtButton>Cadastrar</S.TxtButton>
+                <S.TxtButton>{loadingAuth ? <ActivityIndicator size={24} color='#fff'/> : 'Cadastrar'}</S.TxtButton>
             </S.Button>
 
             <S.SingUpButton onPress={hadleNavigation}>
