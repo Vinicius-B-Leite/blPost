@@ -10,6 +10,7 @@ import { ptBR } from 'date-fns/locale'
 
 
 import firestore from '@react-native-firebase/firestore'
+import { useNavigation } from '@react-navigation/native';
 
 
 
@@ -17,9 +18,8 @@ import firestore from '@react-native-firebase/firestore'
 
 export default function PostList({ data, userId }) {
 
+    const navigation = useNavigation()
     const [likePost, setLikePost] = useState(data?.likes)
-
-    
 
     const formatTimePost = () => {
         const datePost = new Date(data.created.seconds * 1000) 
@@ -51,9 +51,11 @@ export default function PostList({ data, userId }) {
         .delete().then(() => setLikePost(likePost - 1))
     }
 
+    
+
     return (
         <S.Container>
-            <S.Header>
+            <S.Header onPress={() => navigation.navigate('PostsUsers', {title: data.autor, userId: data.userId})}>
                 <S.Avatar source={data.avatarUrl ? { uri: data?.avatarUrl } : require('../../assets/avatar.png')} />
                 <S.Name numberOfLines={1}>{data?.autor}</S.Name>
             </S.Header>
